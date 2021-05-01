@@ -1,0 +1,53 @@
+{
+    "log": {
+        "loglevel": "info"
+    },
+    "routing": {
+        "domainStrategy": "AsIs",
+        "rules": [
+            {
+                "type": "field",
+                "ip": [
+                    "geoip:private"
+                ],
+                "outboundTag": "block"
+            }
+        ]
+    },
+    "inbounds": [
+        {
+            "listen": "0.0.0.0",
+            "port": 11210,
+            "protocol": "vmess",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "5ed1ad68-6337-4fdb-a34b-f57e0b96ddbc"
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "tlsSettings": {
+                    "certificates": [
+                        {
+                            "certificateFile": "/root/.acme.sh/rtx3080.pp.ua/fullchain.cer",
+                            "keyFile": "/root/.acme.sh/rtx3080.pp.ua/rtx3080.pp.ua.key"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "tag": "block"
+        }
+    ]
+}
