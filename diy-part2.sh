@@ -14,6 +14,6 @@
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 sed -i 's/192.168.1.1/10.168.1.1/g' package/base-files/files/bin/config_generate
 
-sed -i '/luci-app-ssr-plus/d:/luci-app-vsftpd/d' include/target.mk
+sed -i '/luci-app-ssr-plus/d;/luci-app-vsftpd/d' include/target.mk
 
 
