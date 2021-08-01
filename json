@@ -1,0 +1,108 @@
+{
+  "log": {
+    "loglevel": "error"
+  },
+  "inbound": {
+    "port": 11234,
+    "listen": "127.0.0.1",
+    "protocol": "vmess",
+    "settings": {
+      "clients": [
+        {
+          "id": "5ed1ad68-6337-4fdb-a34b-f57e0b96ddbc",
+          "level": 1,
+          "alterId": 64,
+          "email": "kalagxw@gmail.com"
+        }
+      ]
+    },
+    "sniffing": {
+      "enabled": true,
+      "destOverride": [
+        "http",
+        "tls"
+      ]
+    },
+    "streamSettings": {
+      "network": "ws",
+      "wsSettings": {
+        "path": "/phpmyadmin"
+      },
+      "mux": {
+        "enabled": false,
+        "concurrency": 0
+      }
+    }
+  },
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "128.199.212.156",
+            "port": 1234,
+            "users": [
+              {
+                "id": "5ed1ad68-6337-4fdb-a34b-f57e0b96ddbc",
+                "encryption": "none",
+                "level": 0
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp"
+      },
+      "tag": "sgp-netflix"
+    },
+    {
+      "protocol": "socks",
+      "settings": {
+        "servers": [
+          {
+            "address": "127.0.0.1",
+            "port": 8888
+          }
+        ]
+      },
+      "tag": "warp-proxy"
+    },
+    {
+      "protocol": "freedom",
+      "settings": {
+
+      },
+      "proxySettings": {
+        "tag": "warp-proxy"
+      },
+      "tag": "warp-8888"
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {
+
+      },
+      "tag": "blocked"
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "blocked"
+      },
+      {
+        "type": "field",
+        "domain": [
+          "geosite:netflix"
+        ],
+        "outboundTag": "sgp-netflix"
+      }
+    ]
+  }
+}
