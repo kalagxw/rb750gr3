@@ -16,4 +16,7 @@ sed -i 's/192.168.1.1/10.168.1.1/g' package/base-files/files/bin/config_generate
 
 sed -i '/luci-app-ssr-plus/d;/luci-app-vsftpd/d' include/target.mk
 
+# dnsmasq with chnroute
+wget --no-check-certificate https://raw.githubusercontent.com/muziling/dnsmasq-chnroute/master/0000-Add-feature-to-support-chnroutes.patch -P package/network/services/dnsmasq/patches
+
 
