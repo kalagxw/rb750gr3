@@ -19,4 +19,7 @@ sed -i '/luci-app-ssr-plus/d;/luci-app-vsftpd/d' include/target.mk
 # dnsmasq with chnroute
 # wget --no-check-certificate https://raw.githubusercontent.com/muziling/dnsmasq-chnroute/master/0000-Add-feature-to-support-chnroutes.patch -P package/network/services/dnsmasq/patches
 
+#chinadns-ng-op
+git clone https://github.com/kalagxw/openwrt-chinadns-ng.git package/chinadns-ng
+
 
