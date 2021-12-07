@@ -24,5 +24,5 @@ git clone https://github.com/kalagxw/openwrt-chinadns-ng.git package/chinadns-ng
 
 #udp2raw
 git clone https://github.com/kalagxw/openwrt-udp2raw.git package/udp2raw
-git clone https://github.com/wangyu-/luci-app-udp2raw package/luci-app-udp2raw
+git clone https://github.com/wangyu-/luci-app-udp2raw.git package/luci-app-udp2raw
 
